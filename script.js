@@ -13,10 +13,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 var geometry = new THREE.TorusGeometry(1, 0.5, 16, 50);
-var material = new THREE.MeshBasicMaterial({
-  wireframe: true,
-  wireframeLinewidth: 0.001,
-});
+var material = new THREE.MeshNormalMaterial({wireframe:true});
 var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
