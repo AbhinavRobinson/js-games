@@ -61,11 +61,11 @@ function init() {
   renderer.shadowMapWidth = 1024;
   renderer.shadowMapHeight = 1024;
 
-  const light = new THREE.DirectionalLight();
+  const light = new THREE.DirectionalLight(0xeeeeee, 1);
 
   document.body.appendChild(renderer.domElement);
 
-  light.position.set(-1, 1, 1);
+  light.position.set(1.4, 3, 1);
   camera.position.set(-10, 10, 10);
 
   const texture = loader.load("./textures/sky.jpg", () => {
