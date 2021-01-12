@@ -19,15 +19,15 @@ document.body.appendChild(renderer.domElement);
 light.position.set(-1,1,1)
 camera.position.z = 5;
 
-scene.background = new THREE.Color(0x111)
+scene.background = new THREE.Color(0x224333)
 
 let geometry = new THREE.IcosahedronGeometry()
 
 let phong = new THREE.MeshPhongMaterial({
-  color: 0x666666,
-  emissive: 50,
-  specular: 0xeeeeee,
-  shininess: 100
+  color: 0x12ee66,
+  emissive: 20,
+  specular: 0x44aa00,
+  shininess: 300
 })
 
 let cube = new THREE.Mesh(geometry, phong);
