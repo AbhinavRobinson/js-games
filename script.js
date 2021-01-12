@@ -1,30 +1,47 @@
 import * as THREE from "./libs/three.module.js";
 
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
 
-var renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+const light = new THREE.DirectionalLight()
+
 document.body.appendChild(renderer.domElement);
 
-var geometry = new THREE.TorusGeometry(1, 0.5, 16, 50);
-var material = new THREE.MeshNormalMaterial({wireframe:true});
-var cube = new THREE.Mesh(geometry, material);
+light.position.set(-1,1,1)
+camera.position.z = 5;
+
+scene.background = new THREE.Color(0x111)
+
+let geometry = new THREE.TorusGeometry(1, 0.5, 32, 100);
+
+let phong = new THREE.MeshPhongMaterial({
+  color: 0xaaaaaa,
+  emissive: 25,
+  specular: 0x0f0f0f,
+  shininess: 100
+})
+
+let cube = new THREE.Mesh(geometry, phong);
+
+scene.add(light)
 scene.add(cube);
 
-camera.position.z = 5;
-var xAxis = new THREE.Vector3(1,1,1);
+let rotationMatrix = new THREE.Vector3(1,1,1);
 
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
-  rotateAroundObjectAxis(cube, xAxis, (Math.PI / 180)/4);
+  rotateAroundObjectAxis(cube, rotationMatrix, (Math.PI / 180)/4);
 }
 animate();
 
