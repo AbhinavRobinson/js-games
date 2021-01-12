@@ -1,7 +1,7 @@
 import * as THREE from "./libs/three.module.js";
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js";
 
-const { scene, renderer, camera } = init();
+const { loader, scene, renderer, camera } = init();
 
 makeSurface();
 
@@ -13,8 +13,7 @@ function testCube() {
     new THREE.MeshPhongMaterial({
       color: 0x333333,
       emissive: 0,
-      specular: 0x44aa00,
-      shininess: 300,
+      shininess: 25,
     })
   );
 
@@ -36,6 +35,8 @@ animate();
 // INIT
 
 function init() {
+  const loader = new THREE.TextureLoader();
+
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(
@@ -67,14 +68,20 @@ function init() {
   light.position.set(-1, 1, 1);
   camera.position.set(-10, 10, 10);
 
-  scene.background = new THREE.Color(0x224333);
+  const texture = loader.load("./textures/sky.jpg", () => {
+    const rt = new THREE.WebGLCubeRenderTarget(texture.image.height);
+    rt.fromEquirectangularTexture(renderer, texture);
+    scene.background = rt;
+  });
+
+  scene.background = texture;
 
   new OrbitControls(camera, renderer.domElement);
 
   light.castShadow = true;
 
   scene.add(light);
-  return { scene, light, renderer, camera };
+  return { loader, scene, light, renderer, camera };
 }
 
 // GET SURFACE
@@ -82,11 +89,16 @@ function init() {
 function makeSurface() {
   let surface = new THREE.BoxGeometry(1000, 0.001, 1000);
 
+  const grass = loader.load("./textures/grass.jpg");
+
+  grass.wrapS = THREE.RepeatWrapping;
+  grass.wrapT = THREE.RepeatWrapping;
+
+  grass.repeat.set(100, 100);
+
   let phong = new THREE.MeshPhongMaterial({
-    color: 0x12ee66,
     emissive: 0,
-    specular: 0x44aa00,
-    shininess: 300,
+    map: grass,
   });
 
   let ground = new THREE.Mesh(surface, phong);
