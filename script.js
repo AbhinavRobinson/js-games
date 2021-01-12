@@ -21,27 +21,42 @@ camera.position.z = 5;
 
 scene.background = new THREE.Color(0x111)
 
-let geometry = new THREE.TorusGeometry(1, 0.5, 32, 100);
+let geometry = new THREE.IcosahedronGeometry()
 
 let phong = new THREE.MeshPhongMaterial({
-  color: 0xaaaaaa,
-  emissive: 25,
-  specular: 0x0f0f0f,
+  color: 0x666666,
+  emissive: 50,
+  specular: 0xeeeeee,
   shininess: 100
 })
 
 let cube = new THREE.Mesh(geometry, phong);
+let cube2 = new THREE.Mesh(geometry, phong);
+let cube3 = new THREE.Mesh(geometry, phong);
+let cube4 = new THREE.Mesh(geometry, phong);
+
+cube.position.x = 2
+cube2.position.x = -2
+cube3.position.y = 2
+cube4.position.y = -2
 
 scene.add(light)
 scene.add(cube);
+scene.add(cube2);
+scene.add(cube3);
+scene.add(cube4)
 
-let rotationMatrix = new THREE.Vector3(1,1,1);
+let rotationMatrix = new THREE.Vector3(1,1,0);
+let rotationMatrix2 = new THREE.Vector3(0,1,1);
 
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
   rotateAroundObjectAxis(cube, rotationMatrix, (Math.PI / 180)/4);
+  rotateAroundObjectAxis(cube2, rotationMatrix2, -(Math.PI / 180)/4);
+  rotateAroundObjectAxis(cube3, rotationMatrix2, (Math.PI / 180)/4);
+  rotateAroundObjectAxis(cube4, rotationMatrix, -(Math.PI / 180)/4);
 }
 animate();
 
