@@ -5,7 +5,25 @@ const { scene, renderer, camera } = init();
 
 makeSurface();
 
+testCube();
 
+function testCube() {
+  let cube = new THREE.Mesh(
+    new THREE.BoxGeometry(),
+    new THREE.MeshPhongMaterial({
+      color: 0x333333,
+      emissive: 0,
+      specular: 0x44aa00,
+      shininess: 300,
+    })
+  );
+
+  cube.position.set(0, 1, 0);
+
+  scene.add(cube);
+
+  cube.castShadow = true;
+}
 
 // ANIMATE
 
@@ -30,6 +48,18 @@ function init() {
   const renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
 
+  renderer.shadowMapEnabled = true;
+  renderer.shadowMapSoft = true;
+
+  renderer.shadowCameraNear = 3;
+  renderer.shadowCameraFar = camera.far;
+  renderer.shadowCameraFov = 50;
+
+  renderer.shadowMapBias = 0.0039;
+  renderer.shadowMapDarkness = 0.5;
+  renderer.shadowMapWidth = 1024;
+  renderer.shadowMapHeight = 1024;
+
   const light = new THREE.DirectionalLight();
 
   document.body.appendChild(renderer.domElement);
@@ -40,6 +70,8 @@ function init() {
   scene.background = new THREE.Color(0x224333);
 
   new OrbitControls(camera, renderer.domElement);
+
+  light.castShadow = true;
 
   scene.add(light);
   return { scene, light, renderer, camera };
@@ -60,6 +92,7 @@ function makeSurface() {
   let ground = new THREE.Mesh(surface, phong);
 
   scene.add(ground);
+  ground.receiveShadow = true;
 }
 
 // HELPERS
