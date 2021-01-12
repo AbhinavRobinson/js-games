@@ -25,7 +25,7 @@ let geometry = new THREE.IcosahedronGeometry()
 
 let phong = new THREE.MeshPhongMaterial({
   color: 0x12ee66,
-  emissive: 20,
+  emissive: 0,
   specular: 0x44aa00,
   shininess: 300
 })
