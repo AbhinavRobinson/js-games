@@ -18,12 +18,25 @@ var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
 camera.position.z = 5;
+var xAxis = new THREE.Vector3(1,1,1);
 
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
-  cube.rotation.x += 0.001;
-  cube.rotation.y += 0.002;
+  rotateAroundObjectAxis(cube, xAxis, (Math.PI / 180)/4);
 }
 animate();
+
+// HELPERS
+
+var rotObjectMatrix;
+function rotateAroundObjectAxis(object, axis, radians) {
+    rotObjectMatrix = new THREE.Matrix4();
+    rotObjectMatrix.makeRotationAxis(axis.normalize(), radians);
+
+    object.matrix.multiply(rotObjectMatrix);
+    object.rotation.setFromRotationMatrix(object.matrix);
+}
+
+// END OF HELPERS
