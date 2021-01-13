@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/js-games/blocky/static/css/main.89aac35c.chunk.css",
+    "main.js": "/js-games/blocky/static/js/main.0a24a1d9.chunk.js",
+    "main.js.map": "/js-games/blocky/static/js/main.0a24a1d9.chunk.js.map",
+    "runtime-main.js": "/js-games/blocky/static/js/runtime-main.a74ad095.js",
+    "runtime-main.js.map": "/js-games/blocky/static/js/runtime-main.a74ad095.js.map",
+    "static/js/2.c0609cc2.chunk.js": "/js-games/blocky/static/js/2.c0609cc2.chunk.js",
+    "static/js/2.c0609cc2.chunk.js.map": "/js-games/blocky/static/js/2.c0609cc2.chunk.js.map",
+    "static/js/3.35d9bc32.chunk.js": "/js-games/blocky/static/js/3.35d9bc32.chunk.js",
+    "static/js/3.35d9bc32.chunk.js.map": "/js-games/blocky/static/js/3.35d9bc32.chunk.js.map",
+    "index.html": "/js-games/blocky/index.html",
+    "static/css/main.89aac35c.chunk.css.map": "/js-games/blocky/static/css/main.89aac35c.chunk.css.map",
+    "static/js/2.c0609cc2.chunk.js.LICENSE.txt": "/js-games/blocky/static/js/2.c0609cc2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a74ad095.js",
+    "static/js/2.c0609cc2.chunk.js",
+    "static/css/main.89aac35c.chunk.css",
+    "static/js/main.0a24a1d9.chunk.js"
+  ]
+}
