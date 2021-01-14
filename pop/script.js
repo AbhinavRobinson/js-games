@@ -3,7 +3,7 @@ window.onload = function () {
   var canvas = document.getElementById("viewport");
   var context = canvas.getContext("2d");
 
-  canvas.style.backgroundColor = "#333";
+  canvas.style.backgroundColor = "#5555aa";
 
   // declare variables
   var p1_score = 0;
