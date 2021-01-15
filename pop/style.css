@@ -18,8 +18,9 @@ h1 {
 }
 
 #pad {
+  margin: 20vh 0;
   width: 100vw;
-  height: 33vw;
+  height: 33vh;
   display: flex;
   align-items: center;
   justify-content: center;

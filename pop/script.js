@@ -1,7 +1,7 @@
 window.onload = function () {
   // get DOM
   var canvas = document.getElementById("viewport");
-  var context = canvas.getContext("2d");
+  var ctx = canvas.getContext("2d");
 
   // bg color
   canvas.style.backgroundColor = "#5555aa";
@@ -28,7 +28,26 @@ window.onload = function () {
   // Render the game
   function render() {
     // Draw the frame
-    drawFrame();
+    drawSpikes(0, 500);
+  }
+
+  function Balloon() {}
+
+  function drawSpikes(x, y) {
+    spikes(x, y);
+    spikes(x + 100, y);
+    spikes(x + 200, y);
+    spikes(x + 300, y);
+    spikes(x + 400, y);
+  }
+
+  function spikes(x, y) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 50, y - 50);
+    ctx.lineTo(x + 100, y);
+    ctx.fillStyle = "#777";
+    ctx.fill();
   }
 
   // add mouse events
