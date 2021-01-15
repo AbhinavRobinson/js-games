@@ -29,9 +29,29 @@ window.onload = function () {
   function render() {
     // Draw the frame
     drawSpikes(0, 500);
+    Balloon(250, 200);
   }
 
-  function Balloon() {}
+  function Balloon(x, y) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, 50, 0, Math.PI * 2, true);
+    ctx.fillStyle = "#aa55ee";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y + 50);
+    ctx.lineTo(x + 10, y + 65);
+    ctx.lineTo(x - 10, y + 65);
+    ctx.fillStyle = "#aa55ee";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y + 65);
+    ctx.lineTo(x, y + 200);
+    ctx.strokeStyle = "#eeeeee";
+    ctx.stroke();
+  }
 
   function drawSpikes(x, y) {
     spikes(x, y);
