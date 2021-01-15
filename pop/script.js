@@ -45,9 +45,6 @@ window.onload = function () {
 
     if ((t / time) * 100 > 1) {
       t = 0;
-      ctx.fillRect(0, 0, 500, 500);
-      ctx.fillStyle = "#eeeeee";
-      ctx.fill();
       Cycles += 1;
     } else {
       t += 1 / 50;
