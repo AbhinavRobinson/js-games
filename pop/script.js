@@ -3,33 +3,75 @@ window.onload = function () {
   var canvas = document.getElementById("viewport");
   var ctx = canvas.getContext("2d");
 
+  Cycles = 0;
+
   // bg color
   canvas.style.backgroundColor = "#5555aa";
-
+  ctx.save();
   // declare variables
   var p1_score = 0;
   var p2_score = 0;
-  var time = 0;
+  var time = 10 * 100;
+  const FRAMES_PER_SECOND = 50;
+
+  const FRAME_MIN_TIME =
+    (1000 / 60) * (60 / FRAMES_PER_SECOND) - (1000 / 60) * 0.5;
+  var lastFrameTime = 0;
 
   // Initialize the game
   function init() {
     // Add mouse events
     canvas.addEventListener("click", onClick);
 
-    // get main loop
+    t = 0;
+
     main(0);
+    // requestAnimationFrame(main);
   }
 
   // Main loop
-  function main(tframe) {
-    render();
+  function main(ft) {
+    if (ft - lastFrameTime < FRAME_MIN_TIME) {
+      requestAnimationFrame(main);
+      return;
+    }
+    lastFrameTime = ft;
+    clear();
+
+    render(t);
+    // render(t);
+    document.getElementById("TIME").innerHTML =
+      "Score : " + Cycles + " | Time : " + parseInt(t);
+
+    if ((t / time) * 100 > 1) {
+      t = 0;
+      ctx.fillRect(0, 0, 500, 500);
+      ctx.fillStyle = "#eeeeee";
+      ctx.fill();
+      Cycles += 1;
+    } else {
+      t += 1 / 50;
+    }
+
+    requestAnimationFrame(main);
   }
 
   // Render the game
-  function render() {
+  function render(t) {
     // Draw the frame
-    drawSpikes(0, 500);
-    Balloon(250, 200);
+
+    cmp = (t / time) * 100 * 175;
+
+    Balloon(250, 50 + cmp);
+    drawSpikes(0, 500 - cmp);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 500);
+    ctx.lineTo(0, 499 - cmp);
+    ctx.lineTo(500, 499 - cmp);
+    ctx.lineTo(500, 500);
+    ctx.fillStyle = "#333";
+    ctx.fill();
   }
 
   function Balloon(x, y) {
@@ -66,8 +108,12 @@ window.onload = function () {
     ctx.moveTo(x, y);
     ctx.lineTo(x + 50, y - 50);
     ctx.lineTo(x + 100, y);
-    ctx.fillStyle = "#777";
+    ctx.fillStyle = "#333";
     ctx.fill();
+  }
+
+  function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   // add mouse events

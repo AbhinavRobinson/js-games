@@ -18,10 +18,17 @@ h1 {
 }
 
 #pad {
+  font-size: 1.5rem;
+  color: white;
   margin: 20vh 0;
   width: 100vw;
   height: 33vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#TIME {
+  margin: 10px;
 }
