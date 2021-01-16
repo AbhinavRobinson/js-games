@@ -6,7 +6,7 @@ window.onload = function () {
   Cycles = 0;
 
   // bg color
-  canvas.style.backgroundColor = "#5555aa";
+  canvas.style.backgroundColor = "#04293F";
   ctx.save();
   // declare variables
   var p1_score = 0;
@@ -66,7 +66,15 @@ window.onload = function () {
     ctx.lineTo(0, 499 - cmp);
     ctx.lineTo(500, 499 - cmp);
     ctx.lineTo(500, 500);
-    ctx.fillStyle = "#333";
+    ctx.fillStyle = "#111D23";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 515 - cmp);
+    ctx.lineTo(0, 499 - cmp);
+    ctx.lineTo(500, 499 - cmp);
+    ctx.lineTo(500, 515 - cmp);
+    ctx.fillStyle = "#64768C";
     ctx.fill();
   }
 
@@ -74,14 +82,14 @@ window.onload = function () {
     ctx.beginPath();
     ctx.moveTo(x, y);
     ctx.arc(x, y, 50, 0, Math.PI * 2, true);
-    ctx.fillStyle = "#aa55ee";
+    ctx.fillStyle = "#4AC97F";
     ctx.fill();
 
     ctx.beginPath();
     ctx.moveTo(x, y + 50);
     ctx.lineTo(x + 10, y + 65);
     ctx.lineTo(x - 10, y + 65);
-    ctx.fillStyle = "#aa55ee";
+    ctx.fillStyle = "#4AC97F";
     ctx.fill();
 
     if (y < 125) {
@@ -122,25 +130,30 @@ window.onload = function () {
     ctx.beginPath();
     ctx.moveTo(x, y + 65);
     ctx.lineTo(x, y + 200);
-    ctx.strokeStyle = "#eeeeee";
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#407E92";
+    ctx.lineWidth = 2;
     ctx.stroke();
   }
 
   function drawSpikes(x, y) {
     spikes(x, y);
+    spikes(x + 50, y);
     spikes(x + 100, y);
+    spikes(x + 150, y);
     spikes(x + 200, y);
+    spikes(x + 250, y);
     spikes(x + 300, y);
+    spikes(x + 350, y);
     spikes(x + 400, y);
+    spikes(x + 450, y);
   }
 
   function spikes(x, y) {
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x + 50, y - 50);
-    ctx.lineTo(x + 100, y);
-    ctx.fillStyle = "#333";
+    ctx.lineTo(x + 25, y - 50);
+    ctx.lineTo(x + 50, y);
+    ctx.fillStyle = "#F5F5F5";
     ctx.fill();
   }
 
