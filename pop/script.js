@@ -92,7 +92,7 @@ window.onload = function () {
       ctx.lineTo(x + 10, y);
       ctx.moveTo(x - 4.5, y + 33);
       ctx.arc(x, y + 25, 10, 8.5, Math.PI * 2, true);
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "#444";
       ctx.lineWidth = 3;
       ctx.stroke();
     } else if (y > 125 && y < 175) {
@@ -103,7 +103,7 @@ window.onload = function () {
       ctx.lineTo(x + 10, y - 2.5);
       ctx.moveTo(x - 7.5, y + 25);
       ctx.lineTo(x + 7.5, y + 25);
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "#444";
       ctx.lineWidth = 3;
       ctx.stroke();
     } else {
@@ -114,7 +114,7 @@ window.onload = function () {
       ctx.lineTo(x + 10, y - 5);
       ctx.moveTo(x + 2.5, y + 30);
       ctx.arc(x, y + 25, 5, 0, Math.PI * 2, true);
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "#444";
       ctx.lineWidth = 3;
       ctx.stroke();
     }
